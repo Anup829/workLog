@@ -1,0 +1,14 @@
+REVOKE EXECUTE ON FUNCTION public.my_employee_id() FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.my_org_id() FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.am_i_active() FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.has_perm(text) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.is_my_team_member(uuid) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.is_my_project(uuid) FROM anon, public;
+REVOKE EXECUTE ON FUNCTION public.is_project_member(uuid) FROM anon, public;
+GRANT EXECUTE ON FUNCTION public.my_employee_id() TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.my_org_id() TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.am_i_active() TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.has_perm(text) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.is_my_team_member(uuid) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.is_my_project(uuid) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.is_project_member(uuid) TO authenticated, service_role;
