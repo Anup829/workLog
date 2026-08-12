@@ -40,12 +40,12 @@ function DashboardPage() {
       const [mine, week, pending, tasks] = await Promise.all([
         supabase
           .from("work_logs")
-          .select("minutes_spent, status")
+          .select("duration_minutes, status")
           .eq("employee_id", me!.employee.id)
           .eq("date", today),
         supabase
           .from("work_logs")
-          .select("minutes_spent")
+          .select("duration_minutes")
           .eq("employee_id", me!.employee.id)
           .gte("date", startOfWeek()),
         supabase
@@ -59,8 +59,8 @@ function DashboardPage() {
           .eq("assignee_id", me!.employee.id)
           .neq("status", "done"),
       ]);
-      const sum = (rows: { minutes_spent: number | null }[] | null) =>
-        (rows ?? []).reduce((acc, r) => acc + (r.minutes_spent ?? 0), 0);
+      const sum = (rows: { duration_minutes: number | null }[] | null) =>
+        (rows ?? []).reduce((acc, r) => acc + (r.duration_minutes ?? 0), 0);
       return {
         todayMinutes: sum(mine.data),
         weekMinutes: sum(week.data),
@@ -76,7 +76,7 @@ function DashboardPage() {
     queryFn: async () => {
       const { data } = await supabase
         .from("work_logs")
-        .select("id, date, title, minutes_spent, status, approval_status")
+        .select("id, date, title, duration_minutes, status, approval_status")
         .eq("employee_id", me!.employee.id)
         .order("date", { ascending: false })
         .limit(6);
@@ -139,9 +139,9 @@ function DashboardPage() {
                 className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border px-3 py-2"
               >
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium">{log.title}</p>
+                  <p className="truncate text-sm font-medium">{log.description}</p>
                   <p className="text-xs text-muted-foreground">
-                    {log.date} · {minutesToHours(log.minutes_spent)}
+                    {log.date} · {minutesToHours(log.duration_minutes)}
                   </p>
                 </div>
                 <Badge variant="secondary">{log.approval_status ?? log.status}</Badge>
