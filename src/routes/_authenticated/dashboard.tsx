@@ -76,7 +76,7 @@ function DashboardPage() {
     queryFn: async () => {
       const { data } = await supabase
         .from("work_logs")
-        .select("id, date, title, duration_minutes, status, approval_status")
+        .select("id, date, description, duration_minutes, status, approval_status")
         .eq("employee_id", me!.employee.id)
         .order("date", { ascending: false })
         .limit(6);
