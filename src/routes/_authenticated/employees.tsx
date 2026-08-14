@@ -117,7 +117,13 @@ function EmployeesPage() {
   });
 
   const update = useMutation({
-    mutationFn: async ({ id, patch }: { id: string; patch: Record<string, unknown> }) => {
+    mutationFn: async ({
+      id,
+      patch,
+    }: {
+      id: string;
+      patch: { role_id?: string | null; employment_status?: string };
+    }) => {
       const { error } = await supabase.from("employees").update(patch).eq("id", id);
       if (error) throw error;
     },
