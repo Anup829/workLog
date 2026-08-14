@@ -17,6 +17,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated/employees'
 import { Route as AuthenticatedLeavesRouteImport } from './routes/_authenticated/leaves'
 import { Route as AuthenticatedProjectsRouteImport } from './routes/_authenticated/projects'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedTasksRouteImport } from './routes/_authenticated/tasks'
 import { Route as AuthenticatedWorkLogsRouteImport } from './routes/_authenticated/work-logs'
 
@@ -59,6 +60,11 @@ const AuthenticatedProjectsRoute = AuthenticatedProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTasksRoute = AuthenticatedTasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/employees': typeof AuthenticatedEmployeesRoute
   '/leaves': typeof AuthenticatedLeavesRoute
   '/projects': typeof AuthenticatedProjectsRoute
+  '/reports': typeof AuthenticatedReportsRoute
   '/tasks': typeof AuthenticatedTasksRoute
   '/work-logs': typeof AuthenticatedWorkLogsRoute
 }
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/employees': typeof AuthenticatedEmployeesRoute
   '/leaves': typeof AuthenticatedLeavesRoute
   '/projects': typeof AuthenticatedProjectsRoute
+  '/reports': typeof AuthenticatedReportsRoute
   '/tasks': typeof AuthenticatedTasksRoute
   '/work-logs': typeof AuthenticatedWorkLogsRoute
 }
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
   '/_authenticated/leaves': typeof AuthenticatedLeavesRoute
   '/_authenticated/projects': typeof AuthenticatedProjectsRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
   '/_authenticated/tasks': typeof AuthenticatedTasksRoute
   '/_authenticated/work-logs': typeof AuthenticatedWorkLogsRoute
 }
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/leaves'
     | '/projects'
+    | '/reports'
     | '/tasks'
     | '/work-logs'
   fileRoutesByTo: FileRoutesByTo
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/leaves'
     | '/projects'
+    | '/reports'
     | '/tasks'
     | '/work-logs'
   id:
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/_authenticated/employees'
     | '/_authenticated/leaves'
     | '/_authenticated/projects'
+    | '/_authenticated/reports'
     | '/_authenticated/tasks'
     | '/_authenticated/work-logs'
   fileRoutesById: FileRoutesById
@@ -206,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProjectsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/tasks': {
       id: '/_authenticated/tasks'
       path: '/tasks'
@@ -229,6 +248,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
   AuthenticatedLeavesRoute: typeof AuthenticatedLeavesRoute
   AuthenticatedProjectsRoute: typeof AuthenticatedProjectsRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
   AuthenticatedTasksRoute: typeof AuthenticatedTasksRoute
   AuthenticatedWorkLogsRoute: typeof AuthenticatedWorkLogsRoute
 }
@@ -239,6 +259,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
   AuthenticatedLeavesRoute: AuthenticatedLeavesRoute,
   AuthenticatedProjectsRoute: AuthenticatedProjectsRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
   AuthenticatedTasksRoute: AuthenticatedTasksRoute,
   AuthenticatedWorkLogsRoute: AuthenticatedWorkLogsRoute,
 }
