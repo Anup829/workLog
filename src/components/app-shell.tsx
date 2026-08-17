@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { LayoutDashboard, ClipboardList, CheckCheck, Users, FolderKanban, ListChecks, CalendarDays, ChartBar as BarChart3, Settings, LogOut, Menu, PanelLeftClose, PanelLeftOpen, Search, Bell, Plus, ChevronRight, User as UserIcon, X } from "lucide-react";
+import { LayoutDashboard, ClipboardList, CheckCheck, Users, FolderKanban, ListChecks, CalendarDays, ChartBar as BarChart3, Settings, LogOut, Menu, PanelLeftClose, PanelLeftOpen, Search, Bell, Plus, ChevronRight, User as UserIcon, X, Sparkles } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -34,7 +34,10 @@ type NavGroup = { label: string; items: NavItem[] };
 const NAV_GROUPS: NavGroup[] = [
   {
     label: "Home",
-    items: [{ to: "/dashboard", label: "Dashboard", icon: LayoutDashboard }],
+    items: [
+      { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { to: "/me", label: "My Work", icon: Sparkles },
+    ],
   },
   {
     label: "My Work",
@@ -236,7 +239,7 @@ export function AppShell({
             <DropdownMenuLabel className="truncate">{me?.employee.full_name}</DropdownMenuLabel>
             <p className="px-2 pb-1 text-xs text-muted-foreground">{me?.employee.email}</p>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => navigate({ to: "/dashboard" })}>
+            <DropdownMenuItem onClick={() => navigate({ to: "/me" })}>
               <UserIcon className="size-4" /> Profile
             </DropdownMenuItem>
             {has("settings.manage") && (
