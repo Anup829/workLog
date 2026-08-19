@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { LayoutDashboard, ClipboardList, CheckCheck, Users, FolderKanban, ListChecks, CalendarDays, ChartBar as BarChart3, Settings, LogOut, Menu, PanelLeftClose, PanelLeftOpen, Search, Bell, Plus, ChevronRight, User as UserIcon, X, Sparkles } from "lucide-react";
+import { LayoutDashboard, ClipboardList, CheckCheck, Users, FolderKanban, ListChecks, CalendarDays, ChartBar as BarChart3, Settings, LogOut, Menu, PanelLeftClose, PanelLeftOpen, Search, Bell, Plus, ChevronRight, User as UserIcon, X, Sparkles, Layers } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -51,6 +51,7 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { to: "/tasks", label: "Tasks", icon: ListChecks },
       { to: "/projects", label: "Projects", icon: FolderKanban },
+      { to: "/misc", label: "Miscellaneous", icon: Layers },
       { to: "/approvals", label: "Approvals", icon: CheckCheck, perm: "worklog.approve" },
     ],
   },

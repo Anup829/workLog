@@ -17,6 +17,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated/employees'
 import { Route as AuthenticatedLeavesRouteImport } from './routes/_authenticated/leaves'
 import { Route as AuthenticatedMeRouteImport } from './routes/_authenticated/me'
+import { Route as AuthenticatedMiscRouteImport } from './routes/_authenticated/misc'
 import { Route as AuthenticatedProjectsRouteImport } from './routes/_authenticated/projects'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
@@ -62,6 +63,11 @@ const AuthenticatedMeRoute = AuthenticatedMeRouteImport.update({
   path: '/me',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedMiscRoute = AuthenticatedMiscRouteImport.update({
+  id: '/misc',
+  path: '/misc',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProjectsRoute = AuthenticatedProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/employees': typeof AuthenticatedEmployeesRoute
   '/leaves': typeof AuthenticatedLeavesRoute
   '/me': typeof AuthenticatedMeRoute
+  '/misc': typeof AuthenticatedMiscRoute
   '/projects': typeof AuthenticatedProjectsRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/employees': typeof AuthenticatedEmployeesRoute
   '/leaves': typeof AuthenticatedLeavesRoute
   '/me': typeof AuthenticatedMeRoute
+  '/misc': typeof AuthenticatedMiscRoute
   '/projects': typeof AuthenticatedProjectsRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
   '/_authenticated/leaves': typeof AuthenticatedLeavesRoute
   '/_authenticated/me': typeof AuthenticatedMeRoute
+  '/_authenticated/misc': typeof AuthenticatedMiscRoute
   '/_authenticated/projects': typeof AuthenticatedProjectsRoute
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/leaves'
     | '/me'
+    | '/misc'
     | '/projects'
     | '/reports'
     | '/settings'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/leaves'
     | '/me'
+    | '/misc'
     | '/projects'
     | '/reports'
     | '/settings'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/_authenticated/employees'
     | '/_authenticated/leaves'
     | '/_authenticated/me'
+    | '/_authenticated/misc'
     | '/_authenticated/projects'
     | '/_authenticated/reports'
     | '/_authenticated/settings'
@@ -242,6 +254,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/misc': {
+      id: '/_authenticated/misc'
+      path: '/misc'
+      fullPath: '/misc'
+      preLoaderRoute: typeof AuthenticatedMiscRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/projects': {
       id: '/_authenticated/projects'
       path: '/projects'
@@ -286,6 +305,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
   AuthenticatedLeavesRoute: typeof AuthenticatedLeavesRoute
   AuthenticatedMeRoute: typeof AuthenticatedMeRoute
+  AuthenticatedMiscRoute: typeof AuthenticatedMiscRoute
   AuthenticatedProjectsRoute: typeof AuthenticatedProjectsRoute
   AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
   AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
@@ -299,6 +319,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
   AuthenticatedLeavesRoute: AuthenticatedLeavesRoute,
   AuthenticatedMeRoute: AuthenticatedMeRoute,
+  AuthenticatedMiscRoute: AuthenticatedMiscRoute,
   AuthenticatedProjectsRoute: AuthenticatedProjectsRoute,
   AuthenticatedReportsRoute: AuthenticatedReportsRoute,
   AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
