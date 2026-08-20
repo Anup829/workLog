@@ -1,10 +1,13 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# AGENTS.md
+
+## Stack
+- TanStack Start (React + Router + Start)
+- Supabase (auth, database, RLS)
+- Tailwind CSS v4 + shadcn/ui
+- Vite
+
+## Conventions
+- File-based routing in src/routes
+- Supabase client in src/integrations/supabase
+- UI components in src/components/ui
+- Lib utilities in src/lib

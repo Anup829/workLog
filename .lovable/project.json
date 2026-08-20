@@ -1,5 +1,1 @@
-{
-  "schemaVersion": 1,
-  "template": "tanstack_start_ts_current",
-  "revision": "tanstack_start_ts_current-c6916125be2f"
-}
+{"project": {"name": "WorkLog", "framework": "tanstack-start"}}
